@@ -15,6 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("Tablica Kanban JAVA_PROJEKT_04");
         primaryStage.getIcons().add(new Image("sample/fxml/css/kanban.png"));
         primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setResizable(false);
         primaryStage.setMinHeight(600);
         primaryStage.setMinWidth(800);
         primaryStage.show();

@@ -57,7 +57,7 @@
                   </Label>
                   <AnchorPane layoutX="8.0" layoutY="37.0" maxHeight="1.7976931348623157E308" prefHeight="471.0" prefWidth="230.0">
                      <children>
-                        <ListView fx:id="toDoList" maxHeight="1.7976931348623157E308" onDragDetected="#addTaskInProgressDetected" onDragDone="#addTaskInProgressDone" onMouseEntered="#infoAboutTaskToDo" onMouseExited="#infoAboutTaskEnd" prefHeight="800.0" prefWidth="230.0" stylesheets="@css/rowStyleTODO.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ListView fx:id="toDoList" maxHeight="1.7976931348623157E308" onDragDetected="#addTaskInProgressDetected" onDragDone="#addTaskInProgressDone" onMouseExited="#infoAboutTaskEnd" onMouseMoved="#infoAboutTaskToDo" prefHeight="800.0" prefWidth="230.0" stylesheets="@css/rowStyleTODO.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <contextMenu>
                               <ContextMenu>
                                  <items>
@@ -80,7 +80,7 @@
                   </Label>
                   <AnchorPane layoutX="5.0" layoutY="35.0">
                      <children>
-                        <ListView fx:id="inProgressList" maxHeight="1080.0" onDragDetected="#addTaskFinishedDetected" onDragDone="#addTaskFinishedDone" onDragDropped="#addTaskInProgressDropped" onDragOver="#addTaskInProgressOver" onMouseEntered="#infoAboutTaskInProgress" onMouseExited="#infoAboutTaskEnd" prefHeight="470.0" prefWidth="237.0" stylesheets="@css/rowStyleINPROGRESS.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ListView fx:id="inProgressList" maxHeight="1080.0" onDragDetected="#addTaskFinishedDetected" onDragDone="#addTaskFinishedDone" onDragDropped="#addTaskInProgressDropped" onDragOver="#addTaskInProgressOver" onMouseExited="#infoAboutTaskEnd" onMouseMoved="#infoAboutTaskInProgress" prefHeight="470.0" prefWidth="237.0" stylesheets="@css/rowStyleINPROGRESS.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <contextMenu>
                               <ContextMenu>
                                  <items>
@@ -103,7 +103,7 @@
                   </Label>
                   <AnchorPane layoutX="5.0" layoutY="35.0">
                      <children>
-                        <ListView fx:id="finishedList" maxHeight="1080.0" onDragDropped="#addTaskFinishedDropped" onDragOver="#addTaskFinishedOver" onMouseEntered="#infoAboutTaskFinished" onMouseExited="#infoAboutTaskEnd" prefHeight="470.0" prefWidth="245.0" stylesheets="@css/rowStyleFINISHED.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ListView fx:id="finishedList" maxHeight="1080.0" onDragDropped="#addTaskFinishedDropped" onDragOver="#addTaskFinishedOver" onMouseExited="#infoAboutTaskEnd" onMouseMoved="#infoAboutTaskFinished" prefHeight="470.0" prefWidth="245.0" stylesheets="@css/rowStyleFINISHED.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <contextMenu>
                               <ContextMenu>
                                  <items>

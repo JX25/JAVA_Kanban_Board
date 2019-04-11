@@ -48,7 +48,6 @@ public class Controller implements Initializable {
     void addTaskFinishedDetected(MouseEvent event) {
         //System.out.println("addTaskFinishedDetected");
         dragDetected(event, inProgressList);
-        setCustomCellFactory(inProgressList);
     }
     @FXML
     void addTaskFinishedDone(DragEvent event) {
@@ -59,14 +58,11 @@ public class Controller implements Initializable {
     void addTaskFinishedDropped(DragEvent event) {
         //System.out.println("addTaskFinishedDropped");
         dragDropped(event, finishedList);
-        setCustomCellFactory(finishedList);
     }
     @FXML
     void addTaskFinishedOver(DragEvent event) {
         //System.out.println("addTaskFinishedOver");
         dragOver(event, finishedList);
-        setCustomCellFactory(finishedList);
-
     }
     @FXML
     void infoAboutTaskToDo(MouseEvent event) {
@@ -84,24 +80,27 @@ public class Controller implements Initializable {
     }
     @FXML
     void infoAboutTaskFinished(MouseEvent event) {
-        if (finishedList.getSelectionModel().getSelectedItem() != null) {
-            String opis = finishedList.getSelectionModel().getSelectedItem().getInformation();
+        /*if (finishedList.getSelectionModel().getSelectedItem() != null) {
+            ObservableList selectedIndices = finishedList.getSelectionModel().getSelectedIndices();
+            Task t = (Task) selectedIndices;
+            String opis = t.getInformation();
             infoAbout(opis);
-        }
+        }*/
     }
     void infoAbout(String opis) {
-        if (opis != null) {
+        /*if (opis != null) {
             tooltip.setText(opis);
-            if (event.getSource() == null) return;
             Node node = (Node) event.getSource();
             com.sun.glass.ui.Robot robot = com.sun.glass.ui.Application.GetApplication().createRobot();
             tooltip.show(node, robot.getMouseX() + 20, robot.getMouseY() + 20);
             tooltip.setConsumeAutoHidingEvents(true);
-        }
+        }*/
     }
     @FXML
     void infoAboutTaskEnd(MouseEvent event) {
         tooltip.hide();
+        tooltip.setText(null);
+
     }
     @FXML
     void removeTaskToDo(ActionEvent event) {
@@ -187,7 +186,6 @@ public class Controller implements Initializable {
     void addTaskInProgressOver(DragEvent event) {
         //System.out.println("addTaskInProgressOver");
         dragOver(event, inProgressList);
-        setCustomCellFactory(inProgressList);
     }
     private void dragDetected(MouseEvent event, ListView listView) {
         this.event = event;
@@ -391,7 +389,6 @@ public class Controller implements Initializable {
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
-
                 try {
                     FileInputStream fis = new FileInputStream(selectedFile);
                     ObjectInputStream ois = new ObjectInputStream(fis);
@@ -405,10 +402,13 @@ public class Controller implements Initializable {
                     updateListViews();
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Alert errorInfo = new Alert(Alert.AlertType.ERROR, "Problem with opening file", ButtonType.OK);
+                    errorInfo.setTitle("wrong extension");
+                    errorInfo.show();
                 }
             } else {
-                Alert errorInfo = new Alert(Alert.AlertType.ERROR, "Chosen file is not .csv", ButtonType.OK);
-                errorInfo.setTitle("This is not .csv file");
+                Alert errorInfo = new Alert(Alert.AlertType.ERROR, "the file is null", ButtonType.OK);
+                errorInfo.setTitle("error null file");
                 errorInfo.show();
             }
     }
@@ -428,6 +428,12 @@ public class Controller implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else
+        {
+            Alert errorInfo = new Alert(Alert.AlertType.ERROR, "Cannot save file", ButtonType.OK);
+            errorInfo.setTitle("There was a problem with saving");
+            errorInfo.show();
         }
     }
 }

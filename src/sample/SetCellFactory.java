@@ -1,6 +1,5 @@
 package sample;
 
-
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
@@ -25,9 +24,9 @@ public class SetCellFactory extends ListView {
                     }
                     else {
                         setText(tsk.toString());
-                        if (tsk.getPriority() == "Low") getStyleClass().add("lowPriorityStyle");
-                        else if (tsk.getPriority() == "Medium") getStyleClass().add("mediumPriorityStyle");
-                        else if (tsk.getPriority() == "High") getStyleClass().add("highPriorityStyle");
+                        if (tsk.getPriority().equals("Low")) getStyleClass().add("lowPriorityStyle");
+                        else if (tsk.getPriority().equals("Medium")) getStyleClass().add("mediumPriorityStyle");
+                        else if (tsk.getPriority().equals("High") ) getStyleClass().add("highPriorityStyle");
                     }
                 }
             };
